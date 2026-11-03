@@ -1,0 +1,53 @@
+SURAKSHA HEALTH CARE POLICY - POLICY WORDING (FICTIONAL SAMPLE FOR TESTING)
+This sample wording is written for AppealPilot tests. It follows the structure of standard Indian health-insurance wordings but does not belong to any real insurer.
+
+1. Preamble
+This Policy is a contract between the Insured Person and the Company. The Company will indemnify Medical Expenses incurred for Hospitalisation, Day Care Treatment and other benefits set out in this Policy, subject to its terms, conditions and exclusions.
+
+2. Definitions
+2.1 Hospitalisation means admission in a Hospital for a minimum period of 24 consecutive In-patient Care hours, except for specified procedures or treatments where such admission could be for a period of less than 24 consecutive hours.
+2.2 Day Care Treatment means medical treatment and/or surgical procedure which is undertaken under general or local anaesthesia in a Hospital or Day Care Centre in less than 24 hours because of technological advancement, and which would otherwise have required Hospitalisation of more than 24 hours. Treatment normally taken on an out-patient basis is not included.
+2.3 Pre-Existing Disease means any condition, ailment, injury or disease that is (a) diagnosed by a physician not more than 36 months prior to the date of commencement of the policy issued by the insurer; or (b) for which medical advice or treatment was recommended by, or received from, a physician not more than 36 months prior to the date of commencement of the policy.
+2.4 Medically Necessary Treatment means any treatment, tests, medication, or stay in Hospital or part of a stay in Hospital which is required for the medical management of the illness or injury suffered by the insured; must not exceed the level of care necessary to provide safe, adequate and appropriate medical care in scope, duration or intensity; must have been prescribed by a medical practitioner; and must conform to the professional standards widely accepted in international medical practice or by the medical community in India.
+2.5 Out-patient (OPD) Treatment means treatment in which the Insured visits a clinic, hospital or associated facility like a consultation room for diagnosis and treatment based on the advice of a Medical Practitioner, and is not admitted as a day care or in-patient.
+2.6 Continuous Coverage means uninterrupted coverage under any individual health insurance policy with any Indian insurer, including renewals and policies ported under the portability provisions, without a break.
+2.7 Associated Medical Expenses means Room Rent, nursing charges, operation theatre charges, fees of Medical Practitioners, surgeons and anaesthetists, and investigations, varying with the room category.
+
+3. Coverage
+3.1 In-patient Hospitalisation. The Company will pay Medical Expenses for Hospitalisation of the Insured Person for more than 24 hours for Medically Necessary Treatment of an illness or injury contracted during the Policy Period.
+3.2 Day Care Treatment. The Company will pay Medical Expenses for Day Care Treatment listed in Annexure I (including cataract surgery, chemotherapy, dialysis, lithotripsy, tonsillectomy and coronary angiography), even where the Insured Person is admitted for less than 24 hours.
+3.3 Pre- and Post-Hospitalisation. Medical Expenses incurred 30 days before and 60 days after Hospitalisation for the same condition are covered.
+3.4 Room Rent. Room Rent is payable up to 1% of the Sum Insured per day for a normal room and 2% of the Sum Insured per day for an ICU.
+
+4. Waiting Periods
+4.1 Pre-Existing Diseases (Code- Excl01). Expenses related to the treatment of a Pre-Existing Disease and its direct complications shall be excluded until the expiry of 36 months of continuous coverage after the date of inception of the first policy with the insurer. In case of enhancement of sum insured the exclusion shall apply afresh to the extent of the enhanced sum insured. If the Insured Person is continuously covered without any break as defined under the portability norms, the waiting period shall be reduced to the extent of prior coverage.
+4.2 Specified Disease or Procedure Waiting Period (Code- Excl02). Expenses related to the treatment of the listed conditions, surgeries or treatments shall be excluded until the expiry of 24 months of continuous coverage after the date of inception of the first policy. The waiting period shall not apply if the listed condition arises from an Accident. List: cataract, benign prostatic hypertrophy, hernia, hysterectomy, joint replacement surgery including knee replacement, gall bladder stones, kidney stones, sinusitis, piles and fistula.
+4.3 First Thirty Days Waiting Period (Code- Excl03). Expenses related to the treatment of any illness within 30 days from the first policy commencement date shall be excluded except claims arising due to an Accident, provided the same are covered. This exclusion shall not apply if the Insured Person has Continuous Coverage for more than twelve months. The within referred waiting period is made applicable to the enhanced sum insured in the event of granting higher sum insured subsequently.
+4.4 Portability Credit. Where a policy is ported from another insurer, all waiting periods under clauses 4.1, 4.2 and 4.3 shall be reduced by the period of Continuous Coverage served under the previous policy.
+
+5. Exclusions
+5.1 Obesity and Weight Control (Code- Excl06). Expenses related to surgical treatment of obesity that does not fulfil all the conditions in Annexure II are excluded.
+5.2 Cosmetic or Plastic Surgery (Code- Excl08). Expenses for cosmetic or plastic surgery are excluded unless for reconstruction following an Accident, burns or cancer, or as part of Medically Necessary Treatment certified by the attending Medical Practitioner.
+5.3 Investigation and Evaluation (Code- Excl04). Expenses related to any admission primarily for diagnostics and evaluation purposes only are excluded. Any diagnostic expenses which are not related or not incidental to the current diagnosis and treatment are excluded.
+5.4 Out-patient Treatment. Expenses for OPD Treatment are not covered unless an OPD cover is opted in the Policy Schedule.
+5.5 Alcohol and Substance Abuse (Code- Excl12). Treatment for alcoholism, drug or substance abuse or any addictive condition and consequences thereof is excluded.
+
+6. Proportionate Deduction
+6.1 If the Insured Person is admitted in a room category with Room Rent higher than the limit in clause 3.4, the Company shall make a proportionate deduction from the Associated Medical Expenses in the same ratio as the admissible Room Rent bears to the actual Room Rent.
+6.2 Proportionate deduction shall not be applied to the cost of pharmacy and consumables, cost of implants and medical devices, and cost of diagnostics. Proportionate deduction shall not be applied in respect of Hospitals which do not follow differential billing, or for ICU charges.
+
+7. Claims Procedure
+7.1 Intimation. The Insured Person shall notify the Company within 48 hours of an emergency Hospitalisation, and at least 48 hours before a planned Hospitalisation.
+7.2 Documents. The claim shall be supported by the following documents, submitted within 30 days of discharge: duly completed claim form, discharge summary, original final bill with itemised break-up, payment receipts, investigation reports, prescriptions, and KYC documents.
+7.3 Condonation of Delay. The Company shall condone delay in intimation or in submission of documents where the delay is proved to be for reasons beyond the control of the Insured Person, and no claim shall be rejected solely on the ground of delay in intimation.
+7.4 Settlement. The Company shall settle or reject a claim within 30 days of receipt of the last necessary document. Any rejection shall be communicated in writing and shall state the specific clause relied upon.
+
+8. Moratorium Period
+8.1 After completion of sixty continuous months of coverage (including portability and migration), no claim under this Policy shall be contestable by the Company on grounds of non-disclosure or misrepresentation, except on grounds of established fraud. This period of sixty continuous months is called the Moratorium Period. The Moratorium is applicable to the sums insured of the first policy; wherever the sum insured is enhanced, completion of sixty continuous months is counted from the date of enhancement for the enhanced amount.
+8.2 The policies would however be subject to all limits, sub-limits, co-payments and deductibles as per the policy contract.
+
+9. Disclosure of Information
+9.1 The Policy shall be void and all premium paid forfeited in the event of misrepresentation, mis-description or non-disclosure of any material fact by the Insured Person, subject to clause 8 (Moratorium Period).
+
+10. Grievance Redressal
+10.1 The Insured Person may write to the Grievance Redressal Officer of the Company. If the Insured Person is not satisfied with the resolution, or receives no response within 14 days, the Insured Person may approach the Insurance Ombudsman under the Insurance Ombudsman Rules, 2017.
