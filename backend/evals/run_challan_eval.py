@@ -66,6 +66,7 @@ def run(mode: str) -> dict:
         rows.append(
             {
                 "id": case["id"],
+                "mode": result.mode,
                 "exact": got == expected,
                 "strong_ok": strong <= expected,
                 "grounded": grounded,
@@ -78,6 +79,7 @@ def run(mode: str) -> dict:
         "summary": {
             "mode": mode,
             "cases": n,
+            "claude_fallbacks": sum(mode == "claude" and r["mode"] != "claude" for r in rows),
             "exact_match": round(sum(r["exact"] for r in rows) / n, 3),
             "strong_precision": round(sum(r["strong_ok"] for r in rows) / n, 3),
             "grounded_rate": round(sum(r["grounded"] for r in rows) / n, 3),
@@ -97,6 +99,11 @@ def main() -> None:
         if not (r["exact"] and r["strong_ok"] and r["grounded"]):
             print(f"  miss {r['id']}: got={r['got']} expected={r['expected']}")
     s = report["summary"]
+    if s["claude_fallbacks"]:
+        sys.exit(
+            f"{s['claude_fallbacks']} of {s['cases']} cases fell back to the offline planner because "
+            "the Claude call failed, so these numbers are NOT Claude's. Check the API key and logs."
+        )
     if s["exact_match"] < args.min_exact or s["strong_precision"] < 1.0 or s["grounded_rate"] < 1.0:
         sys.exit("challan eval below threshold")
 

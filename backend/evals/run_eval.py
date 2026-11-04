@@ -102,6 +102,7 @@ def run(mode: str, model: str, limit: int | None, split: str = "dev") -> dict:
         "recall_at_5": round(sum(r["recall_at_5"] for r in rows) / n, 3),
         "citation_hit_rate": round(sum(r["citation_hit"] for r in rows) / n, 3),
         "grounded_rate": round(sum(r["grounded"] for r in rows) / n, 3),
+        "claude_fallbacks": sum(mode == "claude" and r["mode"] != "claude" for r in rows),
         "avg_cost_usd": round(sum(r["cost_usd"] for r in rows) / n, 4),
         "avg_latency_s": round(sum(r["latency_s"] for r in rows) / n, 2),
     }
@@ -131,6 +132,11 @@ def main() -> None:
                 f"  miss {r['id']}: cat={r['predicted_category']} cited={r['cited']} gold={r['gold']}"
             )
 
+    if s["claude_fallbacks"]:
+        sys.exit(
+            f"{s['claude_fallbacks']} of {s['cases']} cases fell back to the offline planner because "
+            "the Claude call failed, so these numbers are NOT Claude's. Check the API key and logs."
+        )
     if s["recall_at_5"] < args.min_recall or s["citation_hit_rate"] < args.min_citation:
         sys.exit(
             f"eval below threshold: recall {s['recall_at_5']}, citation {s['citation_hit_rate']}"
