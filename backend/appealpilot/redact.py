@@ -13,6 +13,7 @@ from typing import Any
 _PATTERNS: list[tuple[str, re.Pattern[str]]] = [
     ("EMAIL", re.compile(r"[\w.+-]+@[\w-]+\.[\w.-]+")),
     ("AADHAAR", re.compile(r"\b\d{4}[ -]?\d{4}[ -]?\d{4}\b")),
+    ("VEHICLE_NO", re.compile(r"\b[A-Z]{2}[ -]?\d{1,2}[ -]?[A-Z]{1,3}[ -]?\d{4}\b")),
     ("PAN", re.compile(r"\b[A-Z]{5}\d{4}[A-Z]\b")),
     ("PHONE", re.compile(r"(?<!\d)(?:\+91[ -]?)?[6-9]\d{9}(?!\d)")),
     (
