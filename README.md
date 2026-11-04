@@ -60,7 +60,7 @@ Offline baseline (no LLM, free, gated in CI):
 | dev | 1.00 | 1.00 | 1.00 | 1.00 |
 | heldout | 0.83 | 0.67 | 0.67 | 1.00 |
 
-The drop on the held-out policy is the point: keyword rules overfit to one insurer's phrasing, which is where the Claude agent earns its cost. Run `python evals/run_eval.py --mode claude --split heldout` with a key to get the agent's numbers, tokens, latency and cost per case (also run in CI when the `ANTHROPIC_API_KEY` secret is set).
+The drop on the held-out policy is the point: keyword rules overfit to one insurer's phrasing, which is where the Claude agent earns its cost. Run `python evals/run_eval.py --mode claude --split heldout` with a key to get the agent's numbers, tokens, latency and cost per case (also runs in CI when the repo variable `RUN_CLAUDE_EVAL` is `true`). **Claude-mode numbers have not been measured yet**, so the figures above are the offline baseline only.
 
 **Challan regression suite** (`python evals/run_challan_eval.py`, 12 cases): exact-match 1.00, no false "strong" grounds, citations grounded 1.00. Treat this as a regression test, not accuracy evidence: the labels follow the same rules the code implements, so it protects against breaking the 15-day logic and the strong/possible distinction, and says nothing yet about real-world notices. Real notices (with consent) are the next thing to test on.
 

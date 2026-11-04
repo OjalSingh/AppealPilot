@@ -115,3 +115,11 @@ def test_redaction():
     out = redact({"t": [raw]})["t"][0]
     for secret in ("9876543210", "a.b@x.com", "1234 5678 9012", "ABCDE1234F"):
         assert secret not in out
+
+
+def test_api_key_is_cleaned():
+    from appealpilot.config import Settings
+
+    assert Settings(anthropic_api_key="  sk-test\n").anthropic_api_key == "sk-test"
+    assert Settings(anthropic_api_key='"sk-test"').anthropic_api_key == "sk-test"
+    assert Settings(anthropic_api_key="  \n").anthropic_api_key is None

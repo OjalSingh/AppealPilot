@@ -1,5 +1,6 @@
 from functools import lru_cache
 
+from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -14,6 +15,16 @@ class Settings(BaseSettings):
     appealpilot_model: str = "claude-opus-5-5"
     appealpilot_effort: str = "medium"
     appealpilot_max_turns: int = 12
+
+    @field_validator("anthropic_api_key", mode="before")
+    @classmethod
+    def _clean_key(cls, v: str | None) -> str | None:
+        """Pasted secrets often carry a trailing newline or quotes, which make the HTTP
+        header illegal and every request fail. Strip them; treat blank as unset."""
+        if v is None:
+            return None
+        v = str(v).strip().strip("\"'").strip()
+        return v or None
 
     # Storage. Empty means in-memory (great for tests and the local demo).
     database_url: str | None = None
