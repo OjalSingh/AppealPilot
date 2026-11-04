@@ -41,15 +41,12 @@ jobs:
           python evals/run_eval.py --min-recall 0.9 --min-citation 0.9
           python evals/run_eval.py --split heldout
           python evals/run_challan_eval.py --min-exact 0.9
-      - name: Claude agent eval (runs only when the ANTHROPIC_API_KEY secret is set)
+      - name: Claude agent eval (opt-in: set repo variable RUN_CLAUDE_EVAL=true and a funded key)
+        if: vars.RUN_CLAUDE_EVAL == 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
-          if [ -n "$ANTHROPIC_API_KEY" ]; then
-            python evals/run_eval.py --mode claude --split heldout
-          else
-            echo "No ANTHROPIC_API_KEY secret; skipping the paid eval."
-          fi
+          python evals/run_eval.py --mode claude --split heldout
 
   frontend:
     runs-on: ubuntu-latest
