@@ -78,9 +78,55 @@ class Deadline(BaseModel):
     source: str
 
 
+class CaseKind(StrEnum):
+    INSURANCE = "insurance"
+    CHALLAN = "challan"
+
+
+class Ground(StrEnum):
+    NOTICE_TIME_BARRED = "notice_time_barred"
+    WRONG_VEHICLE = "wrong_vehicle"
+    PLATE_CLONED = "plate_cloned"
+    VEHICLE_SOLD = "vehicle_sold"
+    ALREADY_PAID = "already_paid"
+    WRONG_OFFENCE = "wrong_offence"
+    NO_NOTICE_RECEIVED = "no_notice_received"
+    NOTICE_INCOMPLETE = "notice_incomplete"
+    SIGNAGE_ABSENT = "signage_absent"
+
+
+class Challan(BaseModel):
+    """A traffic challan / e-challan notice."""
+
+    challan_number: str | None = None
+    vehicle_number: str | None = None
+    offence: str | None = None
+    section: str | None = None
+    offence_date: date | None = None
+    notice_date: date | None = None
+    amount: float | None = None
+    location: str | None = None
+    authority: str | None = None
+    is_echallan: bool = True
+
+
+class GroundFinding(BaseModel):
+    ground: Ground
+    strength: str = Field(
+        description="'strong' (the documents alone show it) or 'possible' (needs your evidence)"
+    )
+    why: str
+    evidence_needed: list[str] = Field(default_factory=list)
+    guide_ids: list[str] = Field(default_factory=list)
+
+
 class CaseResult(BaseModel):
     case_id: str
-    denial: Denial
+    kind: CaseKind = CaseKind.INSURANCE
+    denial: Denial | None = None
+    challan: Challan | None = None
+    findings: list[GroundFinding] = Field(default_factory=list)
+    notes: list[str] = Field(default_factory=list)
     hits: list[SearchHit] = Field(default_factory=list)
     documents: DocumentCheck | None = None
     appeal: AppealDraft | None = None

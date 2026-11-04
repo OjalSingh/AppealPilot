@@ -81,6 +81,66 @@ def _user_content(docs: list[UploadedDoc]) -> list[dict[str, Any]]:
     return blocks
 
 
+def run_tool_loop(
+    client: Any,
+    settings: Settings,
+    *,
+    system: str,
+    tool_defs: list[dict[str, Any]],
+    tools: Any,
+    messages: list[dict[str, Any]],
+    trace: list[dict],
+) -> dict:
+    """Drive Claude's tool-use loop until it stops calling tools. Returns usage stats."""
+    usage = {"input_tokens": 0, "output_tokens": 0, "cache_read_input_tokens": 0, "turns": 0}
+    started = time.monotonic()
+    for _ in range(settings.appealpilot_max_turns):
+        response = client.beta.messages.create(
+            model=settings.appealpilot_model,
+            max_tokens=16000,
+            system=system,
+            tools=tool_defs,
+            messages=messages,
+            output_config={"effort": settings.appealpilot_effort},
+            cache_control={"type": "ephemeral"},
+            betas=["server-side-fallback-2026-07-01"],
+            fallbacks="default",
+        )
+        usage["turns"] += 1
+        for key in ("input_tokens", "output_tokens", "cache_read_input_tokens"):
+            usage[key] += getattr(response.usage, key, 0) or 0
+
+        if response.stop_reason == "refusal":
+            trace.append({"event": "refusal"})
+            break
+        # Append the full content unchanged (keeps thinking blocks valid).
+        messages.append({"role": "assistant", "content": response.content})
+        if response.stop_reason == "pause_turn":
+            continue
+        if response.stop_reason != "tool_use":
+            break
+
+        results = []
+        for block in response.content:
+            if block.type != "tool_use":
+                continue
+            output, is_error = tools.run(block.name, dict(block.input))
+            trace.append(
+                redact({"tool": block.name, "input": dict(block.input), "error": is_error})
+            )
+            results.append(
+                {
+                    "type": "tool_result",
+                    "tool_use_id": block.id,
+                    "content": output,
+                    "is_error": is_error,
+                }
+            )
+        messages.append({"role": "user", "content": results})
+    usage["latency_s"] = round(time.monotonic() - started, 2)
+    return usage
+
+
 class AppealAgent:
     def __init__(
         self,
@@ -114,54 +174,15 @@ class AppealAgent:
     def run_claude(self, state: CaseState) -> CaseResult:
         tools = Toolbox(state, self.searcher)
         messages: list[dict[str, Any]] = [{"role": "user", "content": _user_content(state.docs)}]
-        usage = {"input_tokens": 0, "output_tokens": 0, "cache_read_input_tokens": 0, "turns": 0}
-        started = time.monotonic()
-
-        for _ in range(self.settings.appealpilot_max_turns):
-            response = self.client.beta.messages.create(
-                model=self.settings.appealpilot_model,
-                max_tokens=16000,
-                system=SYSTEM_PROMPT,
-                tools=TOOL_DEFS,
-                messages=messages,
-                output_config={"effort": self.settings.appealpilot_effort},
-                cache_control={"type": "ephemeral"},
-                betas=["server-side-fallback-2026-07-01"],
-                fallbacks="default",
-            )
-            usage["turns"] += 1
-            for key in ("input_tokens", "output_tokens", "cache_read_input_tokens"):
-                usage[key] += getattr(response.usage, key, 0) or 0
-
-            if response.stop_reason == "refusal":
-                state.trace.append({"event": "refusal"})
-                break
-            # Append the full content unchanged (keeps thinking blocks valid).
-            messages.append({"role": "assistant", "content": response.content})
-            if response.stop_reason == "pause_turn":
-                continue
-            if response.stop_reason != "tool_use":
-                break
-
-            results = []
-            for block in response.content:
-                if block.type != "tool_use":
-                    continue
-                output, is_error = tools.run(block.name, dict(block.input))
-                state.trace.append(
-                    redact({"tool": block.name, "input": dict(block.input), "error": is_error})
-                )
-                results.append(
-                    {
-                        "type": "tool_result",
-                        "tool_use_id": block.id,
-                        "content": output,
-                        "is_error": is_error,
-                    }
-                )
-            messages.append({"role": "user", "content": results})
-
-        usage["latency_s"] = round(time.monotonic() - started, 2)
+        usage = run_tool_loop(
+            self.client,
+            self.settings,
+            system=SYSTEM_PROMPT,
+            tool_defs=TOOL_DEFS,
+            tools=tools,
+            messages=messages,
+            trace=state.trace,
+        )
         # Anything the model did not finish is filled in deterministically.
         self._fill_gaps(state, tools)
         return self._result(state, mode="claude", usage=usage)

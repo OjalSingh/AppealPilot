@@ -1,0 +1,16 @@
+E-CHALLAN GUIDANCE (SUMMARIES, NOT STATUTE TEXT)
+These are plain-language summaries drawn from the public sources listed in the README. They explain the process and are never quoted as law in a letter.
+
+2.1 What an e-challan notice should contain. Photo evidence showing the offence and the vehicle's number plate; the device's measurement, such as the recorded speed; the date, time and place of the offence; the provision of the Act that was violated; and a certificate describing how the electronic record was produced. The notice goes to the registered owner by SMS, email or in physical form.
+
+2.2 Records must be kept. Electronic records collected through monitoring must be kept until the challan is disposed of, so you can ask for the photo or video behind your challan.
+
+2.3 Where to dispute a wrong e-challan. File a grievance on the official eChallan portal: enter the challan details, pick the issue that fits, explain why it is wrong, upload documents, and save the ticket number. If you suspect someone is using a duplicate of your registration number, also complain to the police.
+
+2.4 Virtual court route. If the challan has moved to the Virtual Courts portal, you can contest it there. Contesting only begins the route to a regular court; it does not cancel the challan, and the online payment route no longer applies to that case.
+
+2.5 Filing does not pause payment. Filing a grievance does not necessarily pause a payment deadline. Use the date printed on your notice, and check the portal for the rule at your stage.
+
+2.6 Evidence that helps. Your registration certificate (RC); photographs showing your vehicle differs from the one in the challan image; dashcam or other video; FASTag records, parking receipts or service records showing the vehicle was elsewhere.
+
+2.7 Signage and devices. State governments must notify the public about cameras and similar devices, which are meant to be placed with warning signs at high-risk stretches and critical junctions in larger cities.

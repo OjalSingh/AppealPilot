@@ -28,6 +28,8 @@ def extract_text(filename: str, data: bytes) -> str:
     Scanned PDFs with no text layer return an empty string; in Claude mode those
     are sent to the model as PDF documents so vision can read them.
     """
+    if data[:8] == b"\x89PNG\r\n\x1a\n" or data[:3] == b"\xff\xd8\xff":
+        return ""  # image: Claude reads it with vision; the offline planner cannot OCR
     if filename.lower().endswith(".pdf") or data[:4] == b"%PDF":
         reader = PdfReader(io.BytesIO(data))
         return "\n".join((page.extract_text() or "") for page in reader.pages).strip()

@@ -40,6 +40,7 @@ jobs:
         run: |
           python evals/run_eval.py --min-recall 0.9 --min-citation 0.9
           python evals/run_eval.py --split heldout
+          python evals/run_challan_eval.py --min-exact 0.9
       - name: Claude agent eval (runs only when the ANTHROPIC_API_KEY secret is set)
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}

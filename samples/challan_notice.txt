@@ -1,0 +1,13 @@
+Sample City Traffic Police
+E-CHALLAN NOTICE (fictional sample)
+
+Challan No: SC2606108842
+Vehicle No: MH12AB1234
+Offence: Over-speeding (recorded 78 km/h in a 50 km/h zone)
+Section: 112/183 MV Act
+Date of offence: 10/06/2026
+Place of offence: Ring Road, near Central Junction
+Challan date: 22/09/2026
+Fine amount: Rs. 2,000
+
+Pay online or contest through the eChallan portal.
